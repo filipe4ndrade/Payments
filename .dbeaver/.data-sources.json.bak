@@ -1,0 +1,29 @@
+{
+	"folders": {},
+	"connections": {
+		"h2_embedded-1885428b615-3d51052913f88b41": {
+			"provider": "h2",
+			"driver": "h2_embedded",
+			"name": "h2-console",
+			"save-password": true,
+			"configuration": {
+				"database": "/h2-console",
+				"url": "jdbc:h2:/h2-console",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
