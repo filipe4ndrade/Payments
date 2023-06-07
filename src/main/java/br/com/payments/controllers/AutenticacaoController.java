@@ -1,7 +1,8 @@
 package br.com.payments.controllers;
 
-import br.com.payments.models.dto.AutenticacaoDTO;
-import br.com.payments.models.users.User;
+import br.com.payments.models.dto.AuthenticationDTO;
+import br.com.payments.models.dto.TokenJwtDTO;
+import br.com.payments.models.enitities.User;
 import br.com.payments.services.TokenService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,12 +23,12 @@ public class AutenticacaoController {
     private final TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity efetuarLogin(@RequestBody @Valid AutenticacaoDTO autenticacaoDTORequest){
-        var autenicationToken = new UsernamePasswordAuthenticationToken(autenticacaoDTORequest.login(), autenticacaoDTORequest.senha());
+    public ResponseEntity efetuarLogin(@RequestBody @Valid AuthenticationDTO authenticationDTORequest){
+        var autenicationToken = new UsernamePasswordAuthenticationToken(authenticationDTORequest.login(), authenticationDTORequest.senha());
         var authentication = manager.authenticate(autenicationToken);
 
-        var tokenJWT = tokenService.gerarToken((User) authentication.getPrincipal());
-        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+        var tokenJWT = tokenService.generateToken((User) authentication.getPrincipal());
+        return ResponseEntity.ok(new TokenJwtDTO(tokenJWT));
 
     }
 

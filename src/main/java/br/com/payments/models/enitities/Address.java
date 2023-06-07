@@ -1,4 +1,4 @@
-package br.com.payments.models.address;
+package br.com.payments.models.enitities;
 
 import br.com.payments.models.BaseEntity;
 import br.com.payments.models.dto.AddressDTO;

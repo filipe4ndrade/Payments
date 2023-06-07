@@ -20,10 +20,10 @@ public class PurchaseController {
 
     private final PurchaseService purchaseService;
 
-    @PostMapping("/cadastro")
-    public ResponseEntity<PurchaseDTO> cadastrarPurchase(@RequestBody PurchaseDTO purchaseDTORequest,
+    @PostMapping()
+    public ResponseEntity<PurchaseDTO> createPurchase(@RequestBody PurchaseDTO purchaseDTORequest,
                                                          UriComponentsBuilder uriComponentsBuilder) {
-        PurchaseDTO purchaseDTOResponse = purchaseService.cadastrarPurchase(purchaseDTORequest);
+        PurchaseDTO purchaseDTOResponse = purchaseService.createPurchase(purchaseDTORequest);
         URI uri = uriComponentsBuilder.path("/{id}").buildAndExpand(purchaseDTOResponse.id()).toUri();
         return ResponseEntity.created(uri).body(purchaseDTOResponse);
     }

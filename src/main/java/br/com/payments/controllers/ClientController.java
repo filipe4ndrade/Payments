@@ -19,17 +19,17 @@ public class ClientController {
 
     private final ClientService clientService;
 
-    @PostMapping("/cadastro")
-    public ResponseEntity<ClientDTO> cadastrarClient(@RequestBody ClientDTO clientDTORequest,
+    @PostMapping()
+    public ResponseEntity<ClientDTO> createClient(@RequestBody ClientDTO clientDTORequest,
                                                      UriComponentsBuilder uriComponentsBuilder) {
-        ClientDTO clientDTOResponse = clientService.cadastrarClient(clientDTORequest);
+        ClientDTO clientDTOResponse = clientService.createClient(clientDTORequest);
         URI uri = uriComponentsBuilder.path("/{id}").buildAndExpand(clientDTOResponse.id()).toUri();
         return ResponseEntity.created(uri).body(clientDTOResponse);
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        clientService.deletarClient(id);
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
+        clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
     }
 }

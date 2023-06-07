@@ -1,11 +1,10 @@
-package br.com.payments.models.client;
+package br.com.payments.models.enitities;
 
 import br.com.payments.models.BaseEntity;
-import br.com.payments.models.address.Address;
+import br.com.payments.models.interfaces.Assignment;
 import br.com.payments.models.dto.ClientDTO;
 import br.com.payments.models.enums.ContractTypeEnum;
 
-import br.com.payments.models.purchase.Purchase;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

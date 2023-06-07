@@ -1,4 +1,4 @@
-package br.com.payments.models.client;
+package br.com.payments.models.interfaces;
 
 import br.com.payments.models.enums.ContractTypeEnum;
 

@@ -1,8 +1,7 @@
-package br.com.payments.models.invoice;
+package br.com.payments.models.enitities;
 
 import br.com.payments.models.BaseEntity;
 import br.com.payments.models.dto.InvoiceDTO;
-import br.com.payments.models.purchase.Purchase;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

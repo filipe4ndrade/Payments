@@ -1,28 +1,28 @@
 package br.com.payments.models.dto;
 
-import br.com.payments.models.invoice.Invoice;
+import br.com.payments.models.enitities.Invoice;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public record InvoiceDTO(
 
 
         Long id,
-        @NotBlank
+        @NotEmpty(message = "O campo não pode estar vazio ou nulo")
         LocalDate dueDate,
 
-        @NotBlank
+        @NotBlank(message = "O campo não pode estar vazio ou nulo")
         String barcode,
 
-        @NotBlank
+        @NotEmpty(message = "O campo não pode estar vazio ou nulo")
         Long amount,
 
-        @NotBlank
+        @NotEmpty(message = "O campo não pode estar vazio ou nulo")
         boolean paid,
 
-        @NotBlank
+        @NotEmpty(message = "O campo não pode estar vazio ou nulo")
         Long contractNumber) {
 
     public InvoiceDTO(Invoice invoice) {

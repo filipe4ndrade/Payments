@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ViaCepService {
 
-    public AddressDTO consultarCep(String cep) {
+    public AddressDTO getCep(String cep) {
         if (!isValidCep(cep)) {
             throw new EntityNotFoundException("CEP inválido!");
         }

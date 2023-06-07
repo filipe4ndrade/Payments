@@ -19,19 +19,17 @@ public class InvoiceController {
 
     private final InvoiceService invoiceService;
 
-
-    @Cacheable(value = "consultaDeInvoices")
-    @GetMapping("/consulta/{id}")
-    public ResponseEntity<List<InvoiceDTO>> consultarInvoice(@PathVariable Long id){
-        return ResponseEntity.ok(invoiceService.consultarInvoice(id));
+    @Cacheable(value = "getInvoices")
+    @GetMapping("/{id}")
+    public ResponseEntity<List<InvoiceDTO>> getInvoice(@PathVariable Long id){
+        return ResponseEntity.ok(invoiceService.getInvoice(id));
     }
 
-
-    @CacheEvict(value = "consultaDeInvoices")
-    @PostMapping("/cadastro")
-    public ResponseEntity<InvoiceDTO> cadastrarInvoice(@RequestBody InvoiceDTO invoiceDTORequest,
+    @CacheEvict(value = "getInvoices")
+    @PostMapping()
+    public ResponseEntity<InvoiceDTO> createInvoice(@RequestBody InvoiceDTO invoiceDTORequest,
                                                        UriComponentsBuilder uriComponentsBuilder) {
-        InvoiceDTO invoiceDTOResponse = invoiceService.cadastrarInvoice(invoiceDTORequest);
+        InvoiceDTO invoiceDTOResponse = invoiceService.createInvoice(invoiceDTORequest);
         URI uri = uriComponentsBuilder.path("/{id}").buildAndExpand(invoiceDTOResponse.id()).toUri();
         return ResponseEntity.created(uri).body(invoiceDTOResponse);
     }

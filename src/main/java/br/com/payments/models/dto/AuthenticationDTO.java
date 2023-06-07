@@ -1,6 +1,6 @@
 package br.com.payments.models.dto;
 
-public record AutenticacaoDTO(
+public record AuthenticationDTO(
         String login,
         String senha
 )  {

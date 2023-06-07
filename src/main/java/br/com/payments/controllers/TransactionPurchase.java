@@ -20,10 +20,10 @@ public class TransactionPurchase {
 
     private final TransactionService transactionService;
 
-    @PostMapping("/cadastro")
-    public ResponseEntity<TransactionDTO> cadastrarTransaction(@RequestBody TransactionDTO transactionDTORequest,
+    @PostMapping()
+    public ResponseEntity<TransactionDTO> createTransaction(@RequestBody TransactionDTO transactionDTORequest,
                                                                UriComponentsBuilder uriComponentsBuilder){
-        TransactionDTO transactionDTOResponse = transactionService.cadastrarTransaction(transactionDTORequest);
+        TransactionDTO transactionDTOResponse = transactionService.createTransaction(transactionDTORequest);
         URI uri = uriComponentsBuilder.path("/{id}").buildAndExpand(transactionDTOResponse.id()).toUri();
         return ResponseEntity.created(uri).body(transactionDTOResponse);
     }

@@ -1,9 +1,9 @@
 package br.com.payments.services;
 
-import br.com.payments.models.client.Client;
+import br.com.payments.models.enitities.Client;
 import br.com.payments.models.dto.PurchaseDTO;
-import br.com.payments.models.invoice.Invoice;
-import br.com.payments.models.purchase.Purchase;
+import br.com.payments.models.enitities.Invoice;
+import br.com.payments.models.enitities.Purchase;
 import br.com.payments.repositories.ClientRepository;
 import br.com.payments.repositories.InvoiceRepository;
 import br.com.payments.repositories.PurchaseRepository;
@@ -21,9 +21,8 @@ public class PurchaseService {
     private final ClientRepository clientRepository;
     private final InvoiceRepository invoiceRepository;
 
-    //Cadastrar Purchase
-    public PurchaseDTO cadastrarPurchase(PurchaseDTO purchaseDTO) {
-        Client client = clientRepository.findById(purchaseDTO.clientId())
+    public PurchaseDTO createPurchase(PurchaseDTO purchaseDTO) {
+        Client client = clientRepository.findById(purchaseDTO.client())
                 .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado!"));
 
         List<Invoice> invoice = invoiceRepository.findAllById(purchaseDTO.invoiceId());

@@ -1,22 +1,20 @@
 package br.com.payments.models.dto;
 
-import br.com.payments.models.address.Address;
+import br.com.payments.models.enitities.Address;
 import jakarta.validation.constraints.NotBlank;
 
-import java.util.UUID;
-
 public record AddressDTO(
-        @NotBlank
+        @NotBlank(message = "O campo não pode estar vazio ou nulo")
         String street,
 
 
-        @NotBlank
+        @NotBlank(message = "O campo não pode estar vazio ou nulo")
         String number,
 
-        @NotBlank
+        @NotBlank(message = "O campo não pode estar vazio ou nulo")
         String city,
 
-        @NotBlank
+        @NotBlank(message = "O campo não pode estar vazio ou nulo")
         String state,
 
         String complement) {

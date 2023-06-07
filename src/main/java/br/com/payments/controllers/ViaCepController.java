@@ -8,15 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("consulta-cep")
+@RequestMapping("via-cep")
 public class ViaCepController {
 
     private final ViaCepService viaCepService;
 
-
     @GetMapping("/{cep}")
-    public ResponseEntity<AddressDTO> consultarCep(@PathVariable String cep) {
-        AddressDTO addressDTO = viaCepService.consultarCep(cep);
+    public ResponseEntity<AddressDTO> getCep(@PathVariable String cep) {
+        AddressDTO addressDTO = viaCepService.getCep(cep);
         return ResponseEntity.ok(addressDTO);
     }
 }

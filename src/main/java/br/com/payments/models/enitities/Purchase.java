@@ -1,9 +1,9 @@
-package br.com.payments.models.purchase;
+package br.com.payments.models.enitities;
 
 import br.com.payments.models.BaseEntity;
-import br.com.payments.models.client.Client;
+import br.com.payments.models.enitities.Client;
 import br.com.payments.models.dto.PurchaseDTO;
-import br.com.payments.models.invoice.Invoice;
+import br.com.payments.models.enitities.Invoice;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,6 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Table(name="purchases")
 @Entity(name="Purchase")
@@ -39,7 +38,6 @@ public class Purchase extends BaseEntity{
             inverseJoinColumns = @JoinColumn(name = "invoice_id", referencedColumnName = "id"))
     private List<Invoice> invoices;
 
-    // private Transaction transaction;
 
     public Purchase(PurchaseDTO purchaseDTO, Client client, List<Invoice> invoices){
         this.setId(purchaseDTO.id());
