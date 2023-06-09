@@ -20,7 +20,7 @@ public class ClientController {
     private final ClientService clientService;
 
     @PostMapping()
-    public ResponseEntity<ClientDTO> createClient(@RequestBody ClientDTO clientDTORequest,
+    public ResponseEntity<ClientDTO> createClient(@RequestBody @Valid ClientDTO clientDTORequest,
                                                      UriComponentsBuilder uriComponentsBuilder) {
         ClientDTO clientDTOResponse = clientService.createClient(clientDTORequest);
         URI uri = uriComponentsBuilder.path("/{id}").buildAndExpand(clientDTOResponse.id()).toUri();

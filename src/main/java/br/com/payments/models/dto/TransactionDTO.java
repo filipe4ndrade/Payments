@@ -4,7 +4,7 @@ import br.com.payments.models.enums.PaymentTypeEnum;
 import br.com.payments.models.enums.StatusEnum;
 import br.com.payments.models.enitities.Transaction;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 public record TransactionDTO(
 
@@ -16,13 +16,13 @@ public record TransactionDTO(
         @NotBlank(message = "O campo não pode estar vazio ou nulo")
         StatusEnum status,
 
-        @NotEmpty(message = "O campo não pode estar vazio ou nulo")
+        @NotNull(message = "O campo não pode estar vazio ou nulo")
         Long authorizationCode,
 
-        @NotEmpty(message = "O campo não pode estar vazio ou nulo")
+        @NotNull(message = "O campo não pode estar vazio ou nulo")
         Long installment,
 
-        @NotEmpty(message = "O campo não pode estar vazio ou nulo")
+        @NotNull(message = "O campo não pode estar vazio ou nulo")
         Long purchaseId
 ) {
 

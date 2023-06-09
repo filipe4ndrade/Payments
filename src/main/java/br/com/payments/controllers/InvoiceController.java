@@ -2,6 +2,7 @@ package br.com.payments.controllers;
 
 import br.com.payments.models.dto.InvoiceDTO;
 import br.com.payments.services.InvoiceService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -27,7 +28,7 @@ public class InvoiceController {
 
     @CacheEvict(value = "getInvoices")
     @PostMapping()
-    public ResponseEntity<InvoiceDTO> createInvoice(@RequestBody InvoiceDTO invoiceDTORequest,
+    public ResponseEntity<InvoiceDTO> createInvoice(@RequestBody @Valid InvoiceDTO invoiceDTORequest,
                                                        UriComponentsBuilder uriComponentsBuilder) {
         InvoiceDTO invoiceDTOResponse = invoiceService.createInvoice(invoiceDTORequest);
         URI uri = uriComponentsBuilder.path("/{id}").buildAndExpand(invoiceDTOResponse.id()).toUri();

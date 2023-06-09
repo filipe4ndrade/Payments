@@ -12,7 +12,7 @@ public class ViaCepService {
 
     public AddressDTO getCep(String cep) {
         if (!isValidCep(cep)) {
-            throw new EntityNotFoundException("CEP inválido!");
+            throw new IllegalArgumentException("CEP inválido!");
         }
 
         RestTemplate restTemplate = new RestTemplate();

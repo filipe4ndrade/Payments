@@ -6,7 +6,6 @@ import br.com.payments.models.enums.ContractTypeEnum;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
@@ -23,7 +22,6 @@ public record ClientDTO(
         @NotBlank(message = "O campo não pode estar vazio ou nulo")
         String identity,
 
-        @NotBlank(message = "O campo não pode estar vazio ou nulo")
         ContractTypeEnum contract,
 
         @Email(message = "Email inválido")
@@ -34,9 +32,10 @@ public record ClientDTO(
         String password,
 
         @Valid
+        @NotNull(message = "O campo não pode estar vazio ou nulo")
         AddressDTO address,
 
-        @NotEmpty(message = "O campo não pode estar vazio ou nulo")
+        @NotNull(message = "O campo não pode estar vazio ou nulo")
         Long contractNumber,
 
         List<Long> purchases) {
