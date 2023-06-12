@@ -38,4 +38,9 @@ public class ClientService {
         }
 
     }
+
+    public ClientDTO findClientById(long id) {
+        Client client = clientRepository.getReferenceById(id);
+        return new ClientDTO(client);
+    }
 }
